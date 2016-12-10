@@ -9,13 +9,17 @@ import com.google.auto.value.AutoValue;
 @AutoValue
 public abstract class Book {
     public abstract String title();
-
     public abstract String published();
-
     public abstract Author author();
+    public abstract Builder toBuilder();
+
+    public Book with(String title) {
+        return toBuilder().title(title).build();
+    }
 
     public static Builder builder() {
-        return new AutoValue_Book.Builder();
+        return new AutoValue_Book.Builder()
+                .title("");
     }
 
     @AutoValue.Builder
